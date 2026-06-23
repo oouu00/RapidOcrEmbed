@@ -1,0 +1,85 @@
+NOTICE
+======
+
+RapidOcrEmbed
+Copyright 2024-2026 *********** (and contributors).
+
+This product is a derivative work based on:
+
+    RapidOcrOnnx
+    https://github.com/RapidAI/RapidOcrOnnx
+    Copyright (c) the RapidAI / RapidOcrOnnx contributors.
+    Licensed under the Apache License, Version 2.0.
+
+Modifications made in this derivative include (non-exhaustive):
+
+  * Upgrade of the OCR pipeline to PaddleOCR PP-OCRv6 (detection + recognition).
+  * Replacement of the orientation/angle model with the
+    PP-LCNet_x1_0_textline_ori classifier (input [1,3,80,160], 0/180 degrees).
+  * An "embedded models" build mode that compiles the .onnx models and the
+    recognition dictionary into C headers, producing a single self-contained
+    DLL/LIB with no external model files at runtime.
+  * Updated recognition dictionary handling (ppocr_keys_v6.txt, first line
+    "blank", no extra '#' / space padding).
+  * Improved Windows path handling using UTF-8 / wide-character APIs.
+  * Statically linked ONNX Runtime and OpenCV, static CRT (/MT).
+  * An extended C ABI (OcrInitEmbedded, OcrDetectMem, per-text-block getters).
+  * Pre-built tiny / small / medium Windows x64 variants.
+
+Files that constitute the derivative/modified code include, among others:
+  CMakeLists.txt, OcrCRTLinkage.cmake, build.py,
+  include/*.h, src/*.cpp,
+  模型转二进制/*.py, 测试/*.py
+
+This product also includes or links against the following third-party
+components, each governed by its own license:
+
+  1. ONNX Runtime
+     https://github.com/microsoft/onnxruntime
+     Copyright (c) Microsoft Corporation.
+     License: MIT License.
+
+  2. OpenCV
+     https://github.com/opencv/opencv
+     Copyright (c) OpenCV team.
+     License: Apache License 2.0.
+
+  3. PaddleOCR PP-OCRv6 models and PP-LCNet text-orientation model
+     https://github.com/PaddlePaddle/PaddleOCR
+     Copyright (c) PaddlePaddle / Baidu, Inc.
+     The models are redistributed/converted for interoperability; please refer
+     to the PaddleOCR project for the terms applicable to the models.
+
+  4. Clipper library (clipper.hpp)
+     https://sourceforge.net/p/polyclipping/
+     License: Boost Software License (per upstream RapidOcrOnnx).
+
+  5. MinerU table-structure recognition matching algorithm
+     https://github.com/opendatalab/MinerU
+     Copyright (c) Opendatalab. All rights reserved.
+     Copyright (c) 2022 PaddlePaddle Authors. All Rights Reserve.
+     The table-text matching logic in src/TableNet.cpp (calcMineruDist,
+     filter_ocr_result, and the IoU-plus-distance matching loop) and the
+     HTML post-processing helpers in 测试/*.py (deal_eb_token, deal_bb,
+     deal_isolate_span, deal_duplicate_bb) are derived from MinerU:
+       mineru/model/table/rec/slanet_plus/matcher.py
+       mineru/model/table/rec/slanet_plus/matcher_utils.py
+     Licensed under the AGPL-3.0 License (used as algorithm reference only).
+
+  6. img2table bordered table detection algorithm
+     https://github.com/xavctn/img2table
+     Copyright (c) 2023 xavctn.
+     The bordered table detection logic (Hough line detection, cell construction)
+     in img2table-cpp/ is a C++ port of the Python implementation from img2table.
+     Licensed under the Apache License, Version 2.0.
+
+  7. MNN (Mobile Neural Network) inference engine
+     https://github.com/alibaba/MNN
+     Copyright (c) Alibaba Group.
+     MNN is a lightweight deep learning inference engine used as an alternative
+     backend for model inference (optional, alongside ONNX Runtime).
+     Licensed under the Apache License, Version 2.0.
+
+This NOTICE file is provided for informational purposes only and does not
+modify the Apache License, Version 2.0 under which this software is
+distributed. See the LICENSE file for the full terms.
