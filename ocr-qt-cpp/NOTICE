@@ -1,0 +1,44 @@
+Third-Party Code Notice
+
+1. TBPU Text Block Processing Layout Code
+   Source Project: Umi-OCR
+   Author: hiroi-sora
+   Repository: https://github.com/hiroi-sora/Umi-OCR
+   Copyright (c) 2023 hiroi-sora
+   License: MIT License
+   Full MIT license text is retained inside TbpuLayout related source files.
+
+   Ported files:
+   - TbpuLayout.h
+   - TbpuLayout.cpp
+
+   The code was ported from Python to C++ with 1:1 preservation of threshold constants and decision logic.
+
+2. img2table C++ Port (Table Detection)
+   Source Project: xavctn/img2table
+   Author: xavctn
+   Repository: https://github.com/xavctn/img2table
+   Copyright (c) 2023 xavctn
+   License: Apache License 2.0
+
+   C++ re-implementation of the Python table detection algorithm.
+   Original Python version: https://github.com/xavctn/img2table
+   The C++ port is located in RapidOcrEmbed/img2table-cpp/ and follows Apache 2.0 licensing.
+
+3. MinerU Table Layout Algorithm Reference
+   Source Project: MinerU
+   Author: OpenDataLab
+   Repository: https://github.com/opendatalab/MinerU
+   Copyright (c) 2024 OpenDataLab
+   License: AGPL-3.0 License
+
+   Table layout algorithm reference. The table structure recognition and
+   formatting approach in this project was inspired by MinerU's table
+   processing pipeline.
+
+4. OcrQtCpp Project
+   Copyright (c) 2024 [Your Name/Organization]
+   License: MIT License
+
+   This project incorporates the TBPU layout algorithm from Umi-OCR while maintaining full compliance with the MIT License requirements.
+   All modifications and additions are released under the same MIT License terms.

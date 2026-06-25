@@ -1,0 +1,4 @@
+// Windows 应用资源文件
+// 引用 exe 图标 (编译时由 windres 嵌入 PE 资源段)
+
+IDI_ICON1 ICON "1.ico"

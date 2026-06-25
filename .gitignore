@@ -1,0 +1,61 @@
+# Build artifacts
+build/
+dist/
+out/
+output/
+*.obj
+*.o
+*.exe
+*.dll
+*.so
+*.lib
+*.a
+*.pdb
+*.ilk
+*.exp
+
+# Qt build artifacts
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+*.pro.user
+.qmake.stash
+Makefile*
+*.Debug
+*.Release
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# IDE files
+.vs/
+.vscode/
+.idea/
+*.suo
+*.sln
+*.vcxproj*
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs and temp
+*.log
+*.tmp
+
+# Large binary dependencies (download from Releases)
+RapidOcrEmbed/onnxruntime-static/
+RapidOcrEmbed/opencv-static/
+RapidOcrEmbed/模型转二进制/models/
+
+# Auto-generated model headers
+RapidOcrEmbed/include/models/
+
+# Build outputs in subdirectories
+ocr-qt-cpp/debug/
+ocr-qt-cpp/release/

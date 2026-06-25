@@ -1,0 +1,220 @@
+Third-Party Code & Attribution Notice
+======================================
+
+This repository contains two projects with different licenses:
+
+1. RapidOcrEmbed — Apache License 2.0
+2. OcrQtCpp — MIT License
+
+Both projects incorporate third-party code as described below.
+
+
+RapidOcrEmbed
+--------------
+
+Copyright 2024-2026 858983646 (and contributors).
+
+This project is a derivative work based on:
+
+    RapidOcrOnnx
+    https://github.com/RapidAI/RapidOcrOnnx
+    Copyright (c) the RapidAI / RapidOcrOnnx contributors.
+    Licensed under the Apache License, Version 2.0.
+
+Modifications include:
+  * Upgrade of the OCR pipeline to PaddleOCR PP-OCRv6.
+  * Replacement of the orientation model with PP-LCNet_x1_0_textline_ori.
+  * Embedded-models build mode (single-file DLL, no external .onnx).
+  * Extended C ABI (OcrInitEmbedded, OcrDetectMem, per-block getters).
+  * Statically linked ONNX Runtime and OpenCV, static CRT (/MT).
+  * Table recognition: SLANet Plus + img2table + MinerU IoU matching.
+
+
+Third-party components (RapidOcrEmbed):
+
+  1. ONNX Runtime
+     https://github.com/microsoft/onnxruntime
+     Copyright (c) Microsoft Corporation.
+     License: MIT License.
+
+  2. OpenCV
+     https://github.com/opencv/opencv
+     Copyright (c) OpenCV team.
+     License: Apache License 2.0.
+
+  3. PaddleOCR PP-OCRv6 models and PP-LCNet text-orientation model
+     https://github.com/PaddlePaddle/PaddleOCR
+     Copyright (c) PaddlePaddle / Baidu, Inc.
+     The models are redistributed/converted for interoperability; please refer
+     to the PaddleOCR project for the terms applicable to the models.
+
+  4. Clipper library (clipper.hpp)
+     https://sourceforge.net/p/polyclipping/
+     License: Boost Software License (per upstream RapidOcrOnnx).
+
+  5. MinerU table-structure recognition matching algorithm
+     https://github.com/opendatalab/MinerU
+     Copyright (c) Opendatalab. All rights reserved.
+     Copyright (c) 2022 PaddlePaddle Authors. All Rights Reserved.
+
+     MinerU仅作为表格匹配算法思路参考，本项目未复制、引用其任何源代码，
+     不受 AGPLv3 约束。著作权只保护代码表达，不保护算法逻辑。
+
+     本项目中的表文本匹配逻辑（calcMineruDist、filter_ocr_result、
+     IoU-plus-distance matching loop）是基于 MinerU 算法思路的独立实现，
+     非直接复制代码。详见 src/TableNet.cpp 中的注释。
+
+  6. img2table bordered table detection algorithm
+     https://github.com/xavctn/img2table
+     Copyright (c) 2023 xavctn.
+     The bordered table detection logic in img2table-cpp/ is a C++ port
+     of the Python implementation from img2table.
+     Licensed under the Apache License, Version 2.0.
+
+  7. MNN (Mobile Neural Network) inference engine
+     https://github.com/alibaba/MNN
+     Copyright (c) Alibaba Group.
+     Licensed under the Apache License, Version 2.0.
+
+
+OcrQtCpp
+--------
+
+Copyright (c) 2024 OcrQtCpp Project Team.
+Licensed under the MIT License.
+
+Third-party components (OcrQtCpp):
+
+  1. TBPU Text Block Processing Layout Code
+     Source Project: Umi-OCR
+     Author: hiroi-sora
+     Repository: https://github.com/hiroi-sora/Umi-OCR
+     Copyright (c) 2023 hiroi-sora
+     License: MIT License
+     Ported files: TbpuLayout.h, TbpuLayout.cpp
+
+  2. img2table C++ Port (Table Detection)
+     Source Project: xavctn/img2table
+     Author: xavctn
+     Repository: https://github.com/xavctn/img2table
+     Copyright (c) 2023 xavctn
+     License: Apache License 2.0
+
+  3. MinerU Table Layout Algorithm Reference
+     Source Project: MinerU
+     Author: OpenDataLab
+     Repository: https://github.com/opendatalab/MinerU
+     Copyright (c) 2024 OpenDataLab
+     License: AGPL-3.0 License (algorithm reference only)
+
+  4. k2pdfopt Sorting Algorithm Reference
+     Source Project: k2pdfopt
+     Author: willus.com
+     Repository: http://willus.com/k2pdfopt/
+     TBPU layout algorithm references k2pdfopt's sorting algorithm.
+
+  5. MuPDF PDF Library
+     Source Project: MuPDF
+     Author: Artifex Software
+     Repository: https://mupdf.com/
+     Copyright (c) 2006-2024 Artifex Software, Inc.
+     License: AGPL-3.0 License
+     Used for: PDF rendering, text extraction, and searchable PDF generation.
+
+  6. libxlsxwriter
+     Source Project: libxlsxwriter
+     Author: John McNamara
+     Repository: https://github.com/jmcnamara/libxlsxwriter
+     Copyright (c) 2010-2024 John McNamara
+     License: BSD-2-Clause License
+     Used for: XLSX spreadsheet generation from OCR table results.
+
+  7. FreeType
+     Source Project: FreeType
+     Repository: https://freetype.org/
+     Copyright (c) 1996-2024 The FreeType Project
+     License: FreeType License (FTL)
+     Used for: Font rendering in PDF processing.
+
+  8. HarfBuzz
+     Source Project: HarfBuzz
+     Repository: https://github.com/harfbuzz/harfbuzz
+     Copyright (c) 2010-2024 Google, Inc.
+     License: MIT License
+     Used for: Text shaping engine.
+
+  9. OpenJPEG
+     Source Project: OpenJPEG
+     Repository: https://github.com/uclouvain/openjpeg
+     Copyright (c) 2002-2024 Universite catholique de Louvain (UCL)
+     License: BSD-2-Clause License
+     Used for: JPEG 2000 codec in PDF processing.
+
+  10. jbig2dec
+      Source Project: jbig2dec
+      Author: Artifex Software
+      Repository: https://ghostscript.com/releases/jbig2dec.html
+      Copyright (c) 2001-2024 Artifex Software, Inc.
+      License: AGPL-3.0 License
+      Used for: JBIG2 codec in PDF processing.
+
+  11. zlib
+      Source Project: zlib
+      Repository: https://zlib.net/
+      Copyright (c) 1995-2024 Jean-loup Gailly and Mark Adler
+      License: zlib License
+      Used for: General compression.
+
+  12. Brotli
+      Source Project: Brotli
+      Repository: https://github.com/google/brotli
+      Copyright (c) 2009-2024 Google Inc.
+      License: MIT License
+      Used for: Google compression algorithm.
+
+  13. Little CMS (lcms2)
+      Source Project: Little CMS
+      Repository: https://www.littlecms.com/
+      Copyright (c) 1998-2024 Marti Maria
+      License: MIT License
+      Used for: Color management in PDF processing.
+
+
+Static Libraries
+-----------------
+
+本项目附带的预编译静态库（Qt、ONNX Runtime、OpenCV）仅为方便用户编译。
+用户可自行从各库官网下载源码重新编译替换。
+
+各静态库源码下载地址见 DEP_BUILD.md。
+
+  1. Qt 5.15.2
+     https://download.qt.io/official_releases/qt/5.15/5.15.2/single/
+     License: LGPLv3 (see LICENSES/LGPLv3.txt)
+     本项目完整开源源码，用户可自行编译替换，满足 LGPL 合规要求。
+
+  2. ONNX Runtime
+     https://github.com/microsoft/onnxruntime
+     License: MIT (see LICENSES/MIT.txt)
+
+  3. OpenCV
+     https://github.com/opencv/opencv
+     License: Apache 2.0 (see LICENSES/Apache-2.0.txt)
+
+
+License Files
+--------------
+
+完整的第三方协议文本见 LICENSES/ 目录：
+
+  LICENSES/
+  ├── LGPLv3.txt         # Qt LGPL
+  ├── GPLv3.txt          # Qt GPL
+  ├── Apache-2.0.txt     # Apache 2.0
+  ├── MIT.txt            # MIT
+  ├── AGPL-3.0.txt       # AGPL 3.0
+  └── PaddlePaddle.txt   # PaddleOCR
+
+
+This NOTICE file is provided for informational purposes only and does not
+modify the respective licenses under which the software is distributed.
